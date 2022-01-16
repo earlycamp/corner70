@@ -124,6 +124,9 @@ def signin(request):
 
     return render(request, "authentication/signin.html")
 
+# def logout(request):
+#     return render(request, "authentication/signout.html")
+
 def signout(request):
     logout(request)
     messages.success(request, "Logged out Successfully")

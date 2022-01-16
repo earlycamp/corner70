@@ -59,7 +59,9 @@
        <div id="errorMessage">
            <h2> Failed to get data. Please refresh </h2>
        </div>
+       <button type="submit"> <a href="/signout">SignOut</a></button>
    </div>
+   
    <script>
        var d = new Date();
        year1 = d.getFullYear();
@@ -87,7 +89,7 @@
            allNamesElm.style.display = "none"
            errorMessageElm.style.display = "block"
        }
-       fetch("https://api.apispreadsheets.com/data/17196/").then(res=>{
+       fetch("https://api.apispreadsheets.com/data/Bztd7184JvGkCdE2/").then(res=>{
            if (res.status === 200){
                res.json().then(data=>{
                    const yourData = data["data"]
