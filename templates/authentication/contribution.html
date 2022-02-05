@@ -11,6 +11,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Corner 70</title>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+
+  <script>
+    function SubForm (){
+        $.ajax({
+            url:'https://api.apispreadsheets.com/data/K2Km1dBjcPUnUREV/',
+            type:'post',
+            data:$("#myForm").serializeArray(),
+            success: function(){
+              alert("Form Data Submitted :)")
+            },
+            error: function(){
+              alert("There was an error :(")
+            }
+        });
+    }
+    </script>
+
 </head>
 <body>
     <div class="container">
@@ -38,11 +60,11 @@
         </div>
       </div>
  <br>
-            <form action="https://sheetdb.io/api/v1/wx4atzlf40fth" method="POST" id="sheetdb-form" name="myForm" onsubmit="checkforblank()">
+ <form id="myForm">
               <!-- Name of person paying -->
       
-                    <label for="person_paying" for="form6Example1">Name of person paying</label>
-                    <select name="data[NamePersonPaying]" class="form-select" aria-label="Default select example" aria-placeholder="click me to see the names" id = 'lol2' required>
+                    <label for="NamePersonPaying" for="form6Example1">Name of person paying</label>
+                    <select name="NamePersonPaying" class="form-select" aria-label="Default select example" aria-placeholder="click me to see the names" id = 'lol2' required>
                       <option  value="">Click to see names</option>
                       <option value="Joseph Muriithi Gikunda" >Joseph Muriithi Gikunda</option>
                       <option value="Timothy Kibet Rotich">Timothy Kibet Rotich</option>
@@ -65,8 +87,8 @@
              <br>
               <!-- Name of person paying for -->
             
-                    <label for="person_paying_for">Name of person paying for</label>
-                    <select name="data[NamePayingFor]" class="form-select" aria-label="Default select example" id = 'lol1' required>
+                    <label for="NamePayingFor">Name of person paying for</label>
+                    <select name="NamePayingFor" class="form-select" aria-label="Default select example" id = 'lol1' required>
                       <option value="" >Click to see names</option>
                       <option value="Joseph Muriithi Gikunda">Joseph Muriithi Gikunda</option>
                       <option value="Timothy Kibet Rotich">Timothy Kibet Rotich</option>
@@ -89,90 +111,64 @@
                <br>
             <!-- Payment type -->
   
-                  <label for="payment_type" for="form6Example6">Payment type</label>
-                  <select name="data[PaymentType]" class="form-select" aria-label="Default select example" id = 'lol3' required>
+                  <label for="PaymentType" for="form6Example6">Payment type</label>
+                  <select name="PaymentType" class="form-select" aria-label="Default select example" id = 'lol3' required>
                     <option value="">Click me to see payment type</option>
                     <option value="Subscription">Subscription</option>
                     <option value="Fine">Fine</option>
                     <option value="both">Both</option>
-                  </select>
+                  </select> 
                <br>
            <!--  Amount paid -->
            
               
-                <label for="amount_paid" for="form6Example6">Amount paid</label>
-                <input name="data[AmountPaid]" type="number" id="form6Example6" class="form-control" required/>
+                <label for="AmountPaid" for="form6Example6">Amount paid</label>
+                <input name="AmountPaid" type="number" id="form6Example6" class="form-control" required/>
                 <br>
             <!-- Means of payment-->
           
-                  <label for="means_payment" for="form6Example6">Means of payment</label>
-                  <select name="data[MeansOfPayment]" class="form-select" aria-label="Default select example" id = 'lol4' required>
+                  <label for="MeansOfPayment" for="form6Example6">Means of payment</label>
+                  <select name="MeansOfPayment" class="form-select" aria-label="Default select example" id = 'lol4' required>
                     <option value="">Click me to see means of payment</option>
                     <option value="M-pesa">M-pesa</option>
                     <option value="Bank_Transfer">Bank Transfer</option>
                     <option value="Bank_Deposit">Bank Deposit</option>
-                  </select>
+                  </select> 
                   <span id="result"></span>
                   <br>
               <!-- Transaction code input -->
       
-                    <label for="transaction_code" for="form6Example6">Transaction code</label>
-                    <input name="data[TransactionCode]" type="text" id="form6Example6" class="form-control" required/>
+                    <label for="Transaction code" for="form6Example6">Transaction code</label>
+                    <input name="Transaction code" type="text" id="form6Example6" class="form-control" required/>
                 <br>
                 <!-- Months paying for -->
                 
-                    <label for="months_paying" for="form6Example6">Months paying for</label>
+                    <label for="MonthsPayingFor" >Months paying for</label>
                     <br>
-                    <input type="month" id="data[MonthsPayingFor]" name="bdaymonth" placeholder="From">
+                    <input name="MonthsPayingFor" type="date" id="MonthsPayingFor" required>
+                    
                    
                   <br>
                   <!-- Months paying to -->
                   <br>
-                      <label for="months_paying" for="form6Example6">Months paying to</label>
+                      <label for="MonthsPayingTo">Months paying to</label>
                       <br>
-                      <input type="month" id="data[MonthsPayingTo]" name="bdaymonth" placeholder="To">
+                      <input name="MonthsPayingTo" type="date" id="MonthsPayingTo" required>
                     
                     <br>
             <!-- Date input -->
            <br>
-                  <label for='date_paid'>Date paid</label>
+                  <label for='DatePaid'>Date paid</label>
                   <br>
-                  <input name="data[DatePaid]" type="date" id="Date paid" required>
+                  <input name="DatePaid" type="date" id="Date paid" required>
               
               <br>
             <!-- Time input -->
-            <input type="hidden" name="data[TimeStamp]" value="=NOW()">
+            <input type="hidden" name="TimeStamp" value="=NOW()">
             <br>
+          </form>
             <!-- submit -->
      
-                <button type="submit" onclick="submitForm()">Submit</button>
-            
-          </form>
-          </div>
-          <script type="text/javascript">
-            var form = document.getElementById('sheetdb-form');
-            form.addEventListener("submit", e => {
-              e.preventDefault();
-              fetch(form.action, {
-                  method : "POST",
-                  body: new FormData(document.getElementById("sheetdb-form")),
-              }).then(
-                  response => response.json()
-              ).then((html) => {
-                alert('Transaction successful.Your account has been updated with',data[AmountPaid])
-              });
-            });
-           function validate(){
-             var s1 = document.getElementById('lol4').value;
-             if (s1=="Select means of payment"){
-               alert("plz select means of payment");
-               return false;
-             }
-             return true;
-           }
-           function submitForm() {
-             document.myForm.reset();
-           }
-          </script>
+            <button onclick="SubForm()">Submit</button>
 </body>
 </html>
